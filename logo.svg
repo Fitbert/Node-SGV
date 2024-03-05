@@ -1,1 +1,12 @@
-<rect width="undefined" height="undefined" fill="yellow"/>
+
+        <svg version="1.1"
+            width="300" height="200"
+            xmlns="http://www.w3.org/2000/svg">
+        
+            
+        <circle cx="150" cy="100" r="80" fill="yellow" />
+        <text x="150" y="115" fill="green" font-size="60" text-anchor="middle">ACT</text>
+        
+        
+        
+        </svg>

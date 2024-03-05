@@ -1,60 +1,33 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const ShapesModule = require('./lib/shapes.js'); // Import the entire module
+const ShapesModule = require('./lib/shapes.js');
 
-const { circle, rectangle, square } = ShapesModule; // Destructure the classes
-
-
+const { Triangle, Circle, Square } = ShapesModule;
 
 // TODO: Create an array of questions for user input
 const questions = [
     {
-      type: 'input',
-      name: 'initials',
-      message: 'What three letters would you like your logo to have?'
+        type: 'input',
+        name: 'text',
+        message: 'Enter the text for the shape:',
     },
     {
         type: 'input',
         name: 'textColor',
-        message: 'What color would you like the text to be?'
+        message: 'Enter the text color:',
+    },
+    {
+        type: 'input',
+        name: 'shapeColor',
+        message: 'Enter the shape color:',
     },
     {
         type: 'list',
         name: 'shape',
         message: 'What shape would you like from the choices below?',
-        choices: ['square', 'circle', 'triangle'],
-        inquirer.prompt(questions).then((answers) => {
-            console.log(answers)}),
-        },
-        
-    
-    {
-        type: 'input',
-        name: 'radius',
-        message: 'Enter the radius of the circle:',
-        when: (answers) => answers.shape === 'circle', // Only ask if the shape is a circle
+        choices: ['circle', 'triangle', 'square'],
     },
-    // Additional questions for rectangle
-    {
-        type: 'input',
-        name: 'width',
-        message: 'Enter the width of the rectangle:',
-        when: (answers) => answers.shape === 'rectangle', // Only ask if the shape is a rectangle
-    },
-    {
-        type: 'input',
-        name: 'height',
-        message: 'Enter the height of the rectangle:',
-        when: (answers) => answers.shape === 'rectangle', // Only ask if the shape is a rectangle
-    },
-    {
-        type: 'input',
-        name: 'shapeColor',
-        message: 'What color would you like the shape to be?'
-    },
-    
 ];
-
 
 // TODO: create a function to create SVG logo
 function createLogo() {
@@ -64,24 +37,33 @@ function createLogo() {
         // Choose the correct shape class based on user input
         switch (answers.shape) {
             case 'circle':
-                shape = new circle(answers.shapeColor, answers.radius);
+                shape = new Circle(answers.text, answers.textColor, answers.shapeColor);
                 break;
-            case 'rectangle':
-                shape = new rectangle(answers.shapeColor, answers.width, answers.height);
+            case 'triangle':
+                shape = new Triangle(answers.text, answers.textColor, answers.shapeColor);
                 break;
             case 'square':
-                shape = new square(answers.shapeColor, answers.side);
+                shape = new Square(answers.text, answers.textColor, answers.shapeColor);
                 break;
             default:
                 console.error('Invalid shape:', answers.shape);
                 return;
         }
 
-        const logo = shape.render();
-        console.log(logo);
-        fs.writeFileSync('logo.svg', logo);
-    });
-}
+        const logo = `
+        <svg version="1.1"
+            width="300" height="200"
+            xmlns="http://www.w3.org/2000/svg">
+        
+            ${shape.render()}
+        
+        
+        </svg>`;
+                console.log(logo);
+                fs.writeFileSync('logo.svg', logo);
+            });
+        }
+        
 
 // Call your function to run the script
 createLogo();
