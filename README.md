@@ -12,8 +12,8 @@ SGV Logo file creator using node and inquirer.
 This weeks challenge was using node and inquirer to create and render a SVG logo. The challenge consisting asking question from the user to create a SVG logo with initials, colors and shape attributes and then create the logo with the answers. As well as a testing stage using jest. 
 
 ## links
-https://fitbert.github.io/Node-SGV/
-https://github.com/Fitbert/Node-SGV.git
+https://fitbert.github.io/Node-SGV/,
+https://github.com/Fitbert/Node-SGV.git,
 https://drive.google.com/file/d/1P9kvgSRp0LBMmgBOPDsw0zkkEucY7-pm/view?usp=drive_link
 
 
