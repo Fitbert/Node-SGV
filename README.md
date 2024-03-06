@@ -8,8 +8,9 @@
 SGV Logo file creator using node and inquirer.
 
 ## Usage
-
+You will need to install the npm package using the following command line, npm init, and then use the following command npm install following npm start(or node index.js).
 This weeks challenge was using node and inquirer to create and render a SVG logo. The challenge consisting asking question from the user to create a SVG logo with initials, colors and shape attributes and then create the logo with the answers. As well as a testing stage using jest. 
+
 
 ## links
 https://fitbert.github.io/Node-SGV/,
